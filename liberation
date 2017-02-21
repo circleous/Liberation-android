@@ -3,9 +3,8 @@
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function help {
-    echo "Help:"
-    echo "$0 build - build liberation"
-    echo "$0 clean - clean project"
+    echo -e "Help:\t$0 build - build liberation"
+    echo -e "\t$0 clean - clean project"
 }
 
 MODE=$1
