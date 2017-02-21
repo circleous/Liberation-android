@@ -5,7 +5,7 @@ Liberation-android a *shameless* rip-off from <https://github.com/Razzile/Libera
 ## Usage
 To use Liberation, follow these steps:
 * Clone repo `git clone https://github.com/circleous/Liberation-android`,
-* [Build static library](#build),
+* [Build static library](#building-liberation),
 * Include `<Liberation.h>` in your c++ file,
 * Link static library (liberation.a) in your project, example of use at [example/](../blob/master/example/).
  
