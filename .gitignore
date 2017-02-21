@@ -1,0 +1,4 @@
+libs/
+obj/
+*.sublime-project
+*.sublime-workspace
