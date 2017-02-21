@@ -1,0 +1,28 @@
+#!/bin/bash
+
+current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+function help {
+    echo "Help:"
+    echo "$0 build - build liberation"
+    echo "$0 clean - clean project"
+}
+
+MODE=$1
+
+if [[ "$MODE" == "build" ]]; then
+    if ! type "ndk-build" > /dev/null 2>&1; then
+        echo "Install Android NDK and add it to \$PATH"
+        echo "Aborting..."
+        exit
+    fi
+    echo "NDK_PROJECT_PATH=${current_dir}/source/ ndk-build"
+    NDK_PROJECT_PATH=${current_dir}/source/ ndk-build
+
+elif [[ "$MODE" == "clean" ]]; then
+    echo "rm -rf ${current_dir}/source/obj/*"
+    rm -rf ${current_dir}/source/obj/*
+
+else
+    help
+fi
