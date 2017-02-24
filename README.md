@@ -1,6 +1,6 @@
 Liberation-android
 ========
-Liberation-android a *shameless* rip-off from <https://github.com/Razzile/Liberation>.
+Liberation-android by [Liberation](https://github.com/Razzile/Liberation).
 
 ## Usage
 To use Liberation, follow these steps:
@@ -33,7 +33,7 @@ When built, there should be a `liberation.a` file in the `source/obj/local/$(TAR
 ## License
 
 ```Logos
-//Copyright (c) 2016, circleous
+//Copyright (c) 2017, circleous
 
 //Permission to use, copy, modify, and/or distribute this software for any purpose
 //with or without fee is hereby granted, provided that the above copyright notice
