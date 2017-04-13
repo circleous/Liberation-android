@@ -1,4 +1,28 @@
+# C++
+*.d
+*.o
+*.obj
+*.so
+*.lai
+*.la
+*.a
+*.lib
+
+# NDK
 libs/
 obj/
+
+# Sublime
 *.sublime-project
 *.sublime-workspace
+
+# CMAKE
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake

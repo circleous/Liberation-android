@@ -3,24 +3,42 @@
 #include <dlfcn.h>
 #include "Liberation.h"
 
-char const *getMoney = "giveMeMoneyRealFast";
+char const *getMoney = "_ZNK8LKPlayer8getMoneyEv";
 
-void doHook()
+int (*orig_getmunny)();
+int getmunny()
 {
-    void *imagehandle = dlopen("libebelac.so", RTLD_GLOBAL | RTLD_NOW);
-    void *pGetMoney = dlsym(imagehandle, getMoney);
+	__android_log_print(ANDROID_LOG_INFO, "HOOK", "call from hooked!");
+	return orig_getmunny();
+}
 
-    Patch *gold = Patch::Setup(pGetMoney, "38467047"); // MOV R0, R7; BX LR;
-    gold->Apply();
+void patchmeuppls()
+{
+	void *imagehandle = dlopen("libcocos2dlua.so", RTLD_GLOBAL | RTLD_NOW);
+	void *pGetMoney = dlsym(imagehandle, getMoney);
+
+	Patch *gold = Patch::Setup(pGetMoney, "38467047"); // MOV R0, R7; BX LR;
+	gold->Apply();
+}
+
+void hookmeuppls()
+{
+	Hook *hooker;
+	hooker = Hook::getInstance();
+
+	void *imagehandle = dlopen("libcocos2dlua.so", RTLD_GLOBAL | RTLD_NOW);
+	void *pGetMoney = dlsym(imagehandle, getMoney);
+
+	hooker->hook(pGetMoney, reinterpret_cast<void*>(getmunny), reinterpret_cast<void**>(orig_getmunny));
 }
 
 jint JNI_OnLoad(JavaVM* vm, void* reserved)
 {
-    jint result = -1;
+	jint result = -1;
 
-    doHook();
+	hookmeuppls();
 
-    result = JNI_VERSION_1_4;
+	result = JNI_VERSION_1_4;
 bail:
-    return result;
+	return result;
 }

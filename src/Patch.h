@@ -1,6 +1,10 @@
-#include "liberation.h"
+#include <string>
+#include <vector>
 
 using bytes = std::vector<uint8_t>;
+
+inline namespace Liberation
+{
 
 class Patch
 {
@@ -23,3 +27,5 @@ protected:
 	bytes _patchBytes;
 	bytes _origBytes;
 };
+
+} // Liberation

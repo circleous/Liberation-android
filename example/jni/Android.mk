@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := liberation
-LOCAL_SRC_FILES := ../../source/obj/local/$(TARGET_ARCH_ABI)/liberation.a
+LOCAL_SRC_FILES := ../../src/obj/local/$(TARGET_ARCH_ABI)/liberation.a
 
 include $(PREBUILT_STATIC_LIBRARY)
 

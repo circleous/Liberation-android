@@ -1,6 +1,9 @@
 #include "Patch.h"
 #include "Memory.h"
 
+inline namespace Liberation
+{
+
 Patch *Patch::Setup(void* _target, uint32_t data)
 {
 	size_t target = (size_t)_target & (~1);
@@ -70,3 +73,5 @@ void Patch::Reset()
 {
 	Memory::Write(_t_addr, _origBytes.data(), _patchSize);
 }
+
+} // Liberation

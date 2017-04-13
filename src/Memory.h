@@ -1,4 +1,8 @@
-#include "liberation.h"
+#pragma once
+
+#include <sys/mman.h>
+#include <byteswap.h>
+#include <unistd.h>
 
 namespace Memory
 {

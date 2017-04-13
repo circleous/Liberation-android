@@ -3,25 +3,28 @@
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function help {
-    echo -e "Help:\t$0 build - build liberation"
-    echo -e "\t$0 clean - clean project"
+	echo -e "Help:\t$0 build - build liberation"
+	echo -e "\t$0 clean - clean project"
 }
 
 MODE=$1
 
 if [[ "$MODE" == "build" ]]; then
-    if ! type "ndk-build" > /dev/null 2>&1; then
-        echo "Install Android NDK and add it to \$PATH"
-        echo "Aborting..."
-        exit
-    fi
-    echo "NDK_PROJECT_PATH=${current_dir}/source/ ndk-build"
-    NDK_PROJECT_PATH=${current_dir}/source/ ndk-build
-
+	if ! type "ndk-build" > /dev/null 2>&1; then
+		echo "Install Android NDK and add it to \$PATH"
+		echo "Aborting..."
+		exit
+	fi
+	echo "NDK_PROJECT_PATH=${current_dir}/src/ ndk-build"
+	NDK_PROJECT_PATH=${current_dir}/src/ ndk-build
+	if [[ -n "$2" ]]; then
+		echo "NDK_PROJECT_PATH=${current_dir}/${2}/ ndk-build"
+		NDK_PROJECT_PATH=${current_dir}/${2}/ ndk-build
+	fi
 elif [[ "$MODE" == "clean" ]]; then
-    echo "rm -rf ${current_dir}/source/obj/*"
-    rm -rf ${current_dir}/source/obj/*
+	echo "rm -rf ${current_dir}/src/obj/*"
+	rm -rf ${current_dir}/src/obj/*
 
 else
-    help
+	help
 fi
